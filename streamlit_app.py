@@ -147,7 +147,7 @@ with tab2:
     
     # Maritime map
     st.subheader("Maritime Events Map")
-    map_fig = create_maritime_map(filtered_df, "Maritime Events Geographic Distribution")
+    map_fig = create_maritime_map(filtered_df)
     st.plotly_chart(map_fig, use_container_width=True)
     
     # Scatter plot

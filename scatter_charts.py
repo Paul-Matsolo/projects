@@ -1,5 +1,6 @@
 # scatter_charts.py - Scatter plot visualization functions
 import plotly.express as px
+import plotly.graph_objects as go
 import pandas as pd
 
 def create_lat_lon_scatter(df, title="Events by Latitude and Longitude"):
@@ -13,12 +14,26 @@ def create_lat_lon_scatter(df, title="Events by Latitude and Longitude"):
     Returns:
         plotly.graph_objects.Figure: Scatter plot figure
     """
+    # Filter out rows with missing coordinates
+    df_clean = df.dropna(subset=['Latitude', 'Longitude'])
+    
+    if len(df_clean) == 0:
+        # Return empty figure if no data
+        fig = go.Figure()
+        fig.add_annotation(
+            text="No data available",
+            xref="paper", yref="paper",
+            x=0.5, y=0.5, showarrow=False
+        )
+        fig.update_layout(title=title, height=500)
+        return fig
+    
+    # Avoid color grouping issues by not using color parameter
     fig = px.scatter(
-        df,
+        df_clean,
         x='Longitude',
         y='Latitude',
-        color='Event_Type',
-        hover_data=['Country', 'Location'],
+        hover_data=['Country', 'Location', 'Event_Type'],
         title=title
     ).update_layout(
         height=500,
@@ -41,11 +56,25 @@ def create_time_scatter(df, title="Events Over Time by Type"):
     df_copy = df.copy()
     df_copy['Date'] = pd.to_datetime(df_copy['Event_Date'])
     
+    # Filter out rows with missing dates
+    df_clean = df_copy.dropna(subset=['Date', 'Event_Type'])
+    
+    if len(df_clean) == 0:
+        # Return empty figure if no data
+        fig = go.Figure()
+        fig.add_annotation(
+            text="No data available",
+            xref="paper", yref="paper",
+            x=0.5, y=0.5, showarrow=False
+        )
+        fig.update_layout(title=title, height=400)
+        return fig
+    
+    # Avoid color grouping issues by not using color parameter
     fig = px.scatter(
-        df_copy,
+        df_clean,
         x='Date',
         y='Event_Type',
-        color='Event_Type',
         hover_data=['Country', 'Location'],
         title=title
     ).update_layout(
