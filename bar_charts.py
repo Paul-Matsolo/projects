@@ -23,10 +23,36 @@ def create_event_type_chart(df, title="Event Type Distribution"):
         title=title,
         labels={'x': 'Event Type', 'y': 'Count'},
         color=event_counts.values,
-        color_continuous_scale='viridis'
+        color_continuous_scale='Viridis'
     ).update_layout(
         height=400,
-        margin=dict(l=50, r=50, t=50, b=50)
+        margin=dict(l=50, r=50, t=50, b=50),
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(family="Inter, sans-serif"),
+        title=dict(
+            font=dict(size=18, color='#1e293b'),
+            x=0.5,
+            xanchor='center'
+        ),
+        xaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b')),
+            tickangle=-45
+        ),
+        yaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b'))
+        ),
+        coloraxis_colorbar=dict(
+            title="Count",
+            titlefont=dict(size=12, color='#64748b'),
+            tickfont=dict(size=10, color='#64748b')
+        )
     )
     
     return fig
@@ -54,10 +80,35 @@ def create_country_chart(df, title="Top Countries by Event Count"):
         title=title,
         labels={'x': 'Event Count', 'y': 'Country'},
         color=country_counts.values,
-        color_continuous_scale='plasma'
+        color_continuous_scale='Plasma'
     ).update_layout(
         height=500,
-        margin=dict(l=100, r=50, t=50, b=50)
+        margin=dict(l=100, r=50, t=50, b=50),
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(family="Inter, sans-serif"),
+        title=dict(
+            font=dict(size=18, color='#1e293b'),
+            x=0.5,
+            xanchor='center'
+        ),
+        xaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b'))
+        ),
+        yaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b'))
+        ),
+        coloraxis_colorbar=dict(
+            title="Count",
+            titlefont=dict(size=12, color='#64748b'),
+            tickfont=dict(size=10, color='#64748b')
+        )
     )
     
     return fig

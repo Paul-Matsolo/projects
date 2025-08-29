@@ -26,7 +26,35 @@ def create_timeline_chart(df, title="Events Over Time"):
         labels={'Date': 'Date', 'count': 'Number of Events'}
     ).update_layout(
         height=400,
-        margin=dict(l=50, r=50, t=50, b=50)
+        margin=dict(l=50, r=50, t=50, b=50),
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(family="Inter, sans-serif"),
+        title=dict(
+            font=dict(size=18, color='#1e293b'),
+            x=0.5,
+            xanchor='center'
+        ),
+        xaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b'))
+        ),
+        yaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b'))
+        )
+    )
+    
+    # Update line styling
+    fig.update_traces(
+        line=dict(color='#667eea', width=3),
+        marker=dict(size=6, color='#667eea'),
+        fill='tonexty',
+        fillcolor='rgba(102, 126, 234, 0.1)'
     )
     
     return fig
@@ -57,7 +85,35 @@ def create_monthly_trend_chart(df, title="Monthly Event Trends"):
     ).update_layout(
         height=400,
         margin=dict(l=50, r=50, t=50, b=50),
-        xaxis_tickangle=-45
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(family="Inter, sans-serif"),
+        title=dict(
+            font=dict(size=18, color='#1e293b'),
+            x=0.5,
+            xanchor='center'
+        ),
+        xaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            tickangle=-45,
+            title=dict(font=dict(size=14, color='#64748b'))
+        ),
+        yaxis=dict(
+            gridcolor='rgba(0,0,0,0.1)',
+            showgrid=True,
+            zeroline=False,
+            title=dict(font=dict(size=14, color='#64748b'))
+        )
+    )
+    
+    # Update line styling
+    fig.update_traces(
+        line=dict(color='#764ba2', width=3),
+        marker=dict(size=6, color='#764ba2'),
+        fill='tonexty',
+        fillcolor='rgba(118, 75, 162, 0.1)'
     )
     
     return fig
