@@ -96,6 +96,8 @@ if len(date_range) == 2:
     ]
 else:
     filtered_df = df
+    start_date = min_date
+    end_date = max_date
 
 if selected_country != "All Countries":
     filtered_df = filtered_df[filtered_df['Country'] == selected_country]
