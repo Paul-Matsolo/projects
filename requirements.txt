@@ -1,9 +1,9 @@
 # Core dependencies with specific versions for Python 3.13 compatibility
 dash>=3.0.4
 plotly>=6.0.0
-gunicorn>=21.2.0
+streamlit>=1.28.0
 
-# Scientific computing - use latest versions with Python 3.13 support
+# Scientific computing - use latest versions for Python 3.13 support
 numpy>=1.27.0
 pandas>=2.2.0
 scikit-learn>=1.4.0
