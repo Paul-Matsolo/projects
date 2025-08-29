@@ -901,3 +901,6 @@ def reset_date_filter(n_clicks):
 # ---------- Run Server ----------
 if __name__ == '__main__':
     app.run_server(debug=True, host='0.0.0.0', port=8050)
+
+# For Gunicorn deployment
+server = app.server
